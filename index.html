@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Meri Butki! 💖🎂</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Fredoka, Dancing Script, Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 40%, #fef3c7 100%);
+      overflow-x: hidden;
+      user-select: none;
+    }
+    .font-cute {
+      font-family: 'Fredoka', cursive;
+    }
+    .font-cursive {
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    /* Ambient floating background hearts */
+    .bg-floating-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatAmbient 9s linear infinite;
+    }
+    @keyframes floatAmbient {
+      0% {
+        transform: translateY(105vh) scale(0.6) rotate(0deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-15vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Candle flicker */
+    .flame-glow {
+      transform-origin: center bottom;
+      animation: flameMotion 1.1s ease-in-out infinite alternate;
+    }
+    @keyframes flameMotion {
+      0% { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 10px #f59e0b); }
+      50% { transform: scale(1.18) rotate(2deg); filter: drop-shadow(0 0 18px #ef4444); }
+      100% { transform: scale(0.92) rotate(-2deg); filter: drop-shadow(0 0 12px #fbbf24); }
+    }
+
+    /* Polaroids with washi tape */
+    .polaroid-card {
+      box-shadow: 0 12px 28px -6px rgba(0,0,0,0.12), 0 6px 12px -4px rgba(0,0,0,0.08);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .polaroid-card:hover {
+      transform: scale(1.05) rotate(0deg) !important;
+      z-index: 20;
+    }
+    .washi-tape {
+      background: rgba(254, 205, 211, 0.85);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+
+    /* 3D Flip Card for Reasons Section */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Slap screen tremor */
+    .screen-tremor {
+      animation: hardTremor 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+    @keyframes hardTremor {
+      10%, 90% { transform: translate3d(-3px, 2px, 0) rotate(-0.5deg); }
+      20%, 80% { transform: translate3d(5px, -4px, 0) rotate(1deg); }
+      30%, 50%, 70% { transform: translate3d(-8px, 6px, 0) rotate(-1.5deg); }
+      40%, 60% { transform: translate3d(8px, -5px, 0) rotate(1.5deg); }
+    }
+
+    /* Slap Arm Swing In */
+    .slap-arm-swing {
+      animation: slapSwing 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.3) forwards;
+    }
+    @keyframes slapSwing {
+      0% {
+        transform: translate(120%, -30%) scale(0.4) rotate(45deg);
+        opacity: 0;
+      }
+      70% {
+        transform: translate(-10%, 5%) scale(1.25) rotate(-15deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .comic-pop {
+      animation: comicBurst 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    @keyframes comicBurst {
+      0% { transform: scale(0.2) rotate(-30deg); opacity: 0; }
+      70% { transform: scale(1.3) rotate(8deg); opacity: 1; }
+      100% { transform: scale(1) rotate(-5deg); opacity: 1; }
+    }
+
+    .heart-glow-pulse {
+      animation: heartGlow 2.2s infinite ease-in-out;
+    }
+    @keyframes heartGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(244,63,94,0.6));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 35px rgba(244,63,94,0.95)) drop-shadow(0 0 50px rgba(251,113,133,0.7));
+        transform: scale(1.04);
+      }
+    }
+
+    /* ==============================================================
+       REALISTIC ROMANTIC TWILIGHT EMBRACE ANIMATIONS
+    ============================================================== */
+    .moon-radiance {
+      animation: moonPulsate 6s ease-in-out infinite alternate;
+    }
+    @keyframes moonPulsate {
+      0% {
+        box-shadow: 0 0 45px rgba(254, 240, 138, 0.45), 0 0 90px rgba(244, 63, 94, 0.35);
+        transform: scale(1);
+      }
+      100% {
+        box-shadow: 0 0 75px rgba(254, 240, 138, 0.75), 0 0 130px rgba(244, 63, 94, 0.55);
+        transform: scale(1.03);
+      }
+    }
+
+    .romantic-breath-hug {
+      animation: realisticBreathing 5s ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+    @keyframes realisticBreathing {
+      0% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-5px) scale(1.015) rotate(0.4deg);
+      }
+      100% {
+        transform: translateY(-2px) scale(1.008) rotate(-0.3deg);
+      }
+    }
+
+    .hair-wind-drift {
+      animation: softHairWind 4s ease-in-out infinite alternate;
+      transform-origin: 175px 120px;
+    }
+    @keyframes softHairWind {
+      0% { transform: rotate(0deg) skewX(0deg); }
+      100% { transform: rotate(2.5deg) skewX(1.5deg); }
+    }
+
+    .shimmer-sparkle {
+      animation: starTwinkle 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes starTwinkle {
+      0% { opacity: 0.2; transform: scale(0.7); }
+      50% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px #fde047); }
+      100% { opacity: 0.3; transform: scale(0.8); }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 relative selection:bg-rose-200">
+
+  <!-- Ambient Floating Background Emojis -->
+  <div id="ambientHearts" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+  <!-- Music Synthesizer Toggle -->
+  <div class="fixed top-4 right-4 z-50 flex items-center gap-2 bg-white/85 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-lg border border-rose-200">
+    <button onclick="toggleCuteMusic()" class="text-rose-500 hover:text-rose-600 transition flex items-center gap-1.5 text-xs sm:text-sm font-bold">
+      <span id="musicIcon">🎵</span>
+      <span id="musicLabel">Bday Melody</span>
+    </button>
+  </div>
+
+  <!-- ==============================================================
+        SCREEN 1: PASSCODE GATE 1 (Relationship Anniversary `0108`)
+  ============================================================== -->
+  <section id="lockScreen1" class="min-h-screen flex items-center justify-center p-4 relative z-20 transition-all duration-700">
+    <div class="bg-white/90 backdrop-blur-md p-6 sm:p-9 rounded-3xl max-w-md w-full shadow-2xl border-2 border-rose-200 text-center relative overflow-hidden">
+      
+      <div id="gate1Icon" class="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner transition-transform duration-300">
+        🔒
+      </div>
+
+      <h1 class="font-cute text-2xl sm:text-3xl text-rose-600 mb-1.5">Ruko Madam Ji! 🌸</h1>
+      <p class="text-xs sm:text-sm text-gray-600 mb-5 font-medium leading-relaxed">
+        Pehle prove karo ki tum sach me meri wahi pyaari Butki ho! Enter our <span class="text-rose-500 font-bold">Secret Relationship Passcode</span> 💕
+      </p>
+
+      <div id="pinBox1" class="mb-3">
+        <input 
+          type="text" 
+          id="passcode1Input" 
+          maxlength="4" 
+          placeholder="••••" 
+          class="w-full text-center text-3xl font-bold tracking-[0.5em] py-3.5 px-4 rounded-2xl border-2 border-rose-300 focus:outline-none focus:border-rose-500 bg-rose-50/60 text-rose-600 transition shadow-inner font-mono"
+        />
+      </div>
+
+      <div class="mb-5">
+        <div class="inline-flex items-center gap-1.5 text-xs sm:text-sm bg-rose-100/90 text-rose-700 px-4 py-2 rounded-2xl border border-rose-200 shadow-sm text-left">
+          <span>💌</span>
+          <span><b>Hint:</b> Wo khaas tareekh jab do pagal hamesha ke liye ek ho gaye the... hamari love story ki shuruat! (DDMM format)</span>
+        </div>
+      </div>
+
+      <button 
+        onclick="verifyPasscode1()" 
+        class="w-full bg-gradient-to-r from-rose-400 via-pink-500 to-rose-500 hover:from-rose-500 hover:to-pink-600 text-white font-cute font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-rose-300/50 transform active:scale-95 transition text-lg flex items-center justify-center gap-2">
+        <span>Secret Gate Kholo! ✨</span>
+      </button>
+
+      <p class="text-[11px] text-gray-400 mt-3">
+        Galat code daalne par bhari nuksaan ho sakta hai! Soch samajh kar daalna 😜
+      </p>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+        SCREEN 2: MYSTERY GIFT BOX UNBOXING + PRANK
+  ============================================================== -->
+  <section id="giftBoxScreen" class="hidden min-h-screen flex items-center justify-center p-4 relative z-20 transition-all duration-700">
+    <div class="bg-white/90 backdrop-blur-md p-6 sm:p-9 rounded-3xl max-w-lg w-full shadow-2xl border-2 border-rose-200 text-center relative overflow-hidden">
+      
+      <div class="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-amber-200">
+        🎉 Verification Successful!
+      </div>
+      <h2 class="font-cute text-2xl sm:text-3xl text-rose-600 mb-2">A Secret Surprise For You! 🎁</h2>
+      <p class="text-xs sm:text-sm text-gray-500 mb-6 font-medium">
+        (Neeche gift box par <span class="text-rose-500 font-bold">Tap / Click</span> karke kholo apna sabse bada gift!)
+      </p>
+
+      <div id="unopenedGift" class="cursor-pointer py-4 group" onclick="openGiftBox()">
+        <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto flex flex-col items-center justify-end">
+          <div id="boxLid" class="w-48 sm:w-56 h-12 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 rounded-xl relative shadow-lg z-20 flex items-center justify-center transition-all duration-700 group-hover:-translate-y-2">
+            <div class="absolute -top-6 w-12 h-8 bg-amber-300 rounded-full border-2 border-amber-400 flex items-center justify-center shadow">
+              <span class="text-sm">🎀</span>
+            </div>
+            <div class="w-8 h-full bg-amber-300 shadow-inner"></div>
+          </div>
+          <div class="w-44 sm:w-52 h-36 sm:h-40 bg-gradient-to-br from-rose-400 via-pink-400 to-rose-500 rounded-b-2xl relative shadow-2xl flex justify-center overflow-hidden">
+            <div class="w-8 h-full bg-amber-300 shadow-inner"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 w-full h-8 bg-amber-300 shadow-inner"></div>
+          </div>
+        </div>
+        <p class="text-xs font-bold text-rose-500 mt-4 animate-bounce">👉 Click Here To Unbox! 👈</p>
+      </div>
+
+      <div id="openedGiftContent" class="hidden">
+        <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto mb-4 flex items-center justify-center">
+          <div class="w-36 h-36 bg-gradient-to-tr from-rose-100 to-pink-50 rounded-full border-4 border-rose-300 shadow-xl flex flex-col items-center justify-center relative animate-bounce">
+            <div class="text-5xl mb-1">😎</div>
+            <span class="font-cute text-xs text-rose-600 font-bold bg-white px-2 py-0.5 rounded-full border border-rose-200 shadow-sm">
+              Mr. Handsome
+            </span>
+          </div>
+        </div>
+
+        <div class="bg-rose-50 p-4 rounded-2xl border border-rose-200 mb-5 text-center">
+          <h3 class="font-cute text-xl text-rose-600 mb-1">
+            "Tumhara Asli Gift Toh MAIN Hi Hoon! 😜❤️"
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Duniya ka sabse caring, handsome aur tumhari har nautanki sehne wala boyfriend mil gaya... ab bhala aur kaunsa gift chahiye meri jaan?!
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center relative min-h-[95px]">
+          <button 
+            onclick="proceedToCelebration()" 
+            class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-cute font-bold py-3 px-6 rounded-2xl shadow-lg transition transform active:scale-95 text-sm sm:text-base">
+            Haan baba, tum hi mera best gift ho! 🥰
+          </button>
+
+          <button 
+            id="runawayNoBtn" 
+            onmouseover="dodgeRunawayBtn()" 
+            onclick="dodgeRunawayBtn()" 
+            class="w-full sm:w-auto bg-gray-200 text-gray-700 font-cute py-2.5 px-4 rounded-2xl shadow text-xs sm:text-sm transition-all absolute sm:static">
+            Mujhe Real Gift Chahiye! 😤
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================================
+        SCREEN 3: THE GRAND BIRTHDAY EXPERIENCE
+  ============================================================== -->
+  <main id="mainCelebrationScreen" class="hidden relative z-10 max-w-4xl mx-auto px-4 py-8 pb-32">
+
+    <!-- Top Romantic Banner -->
+    <header class="text-center mb-10 pt-4">
+      <div class="inline-flex items-center gap-2 bg-rose-100 text-rose-600 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-3 shadow-sm border border-rose-200">
+        <span>✨</span>
+        <span>Today is the Most Beautiful Day of the Year</span>
+        <span>✨</span>
+      </div>
+      <h1 class="font-cute text-3xl sm:text-5xl md:text-6xl text-rose-600 tracking-wide mb-2 drop-shadow-sm">
+        Happy Birthday, Meri Butki! 👑💖
+      </h1>
+      <p class="text-gray-600 text-sm sm:text-base font-medium max-w-lg mx-auto">
+        Meri sabse pyaari dost, meri girlfriend aur meri favorite pagal ladki ke liye ek chhota sa surprise!
+      </p>
+    </header>
+
+    <!-- 1. BIG INTERACTIVE BIRTHDAY CAKE -->
+    <section class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-rose-200 text-center mb-14 relative overflow-hidden">
+      <h2 class="font-cute text-2xl sm:text-3xl text-rose-500 mb-1">Make a Wish & Blow the Candles! 🎂</h2>
+      <p class="text-xs sm:text-sm text-gray-500 mb-6">
+        (Candles par <span class="text-rose-500 font-bold">Tap / Click</span> karo mombatti bujhane ke liye)
+      </p>
+
+      <div class="relative w-64 h-64 sm:w-72 sm:h-72 mx-auto flex flex-col items-center justify-end pb-3 cursor-pointer select-none" onclick="toggleCakeCandles()">
+        
+        <!-- Candles Row -->
+        <div class="flex justify-center gap-6 z-20 mb-[-6px]">
+          <div class="flex flex-col items-center">
+            <div id="cFlame1" class="flame-glow w-3.5 h-7 bg-gradient-to-t from-amber-400 via-orange-400 to-yellow-100 rounded-full shadow-lg"></div>
+            <div class="w-2.5 h-9 bg-gradient-to-b from-pink-300 via-rose-300 to-pink-400 rounded-t-sm shadow"></div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div id="cFlame2" class="flame-glow w-4.5 h-8 bg-gradient-to-t from-amber-400 via-orange-400 to-yellow-100 rounded-full shadow-lg"></div>
+            <div class="w-3 h-11 bg-gradient-to-b from-amber-200 via-amber-300 to-yellow-400 rounded-t-sm shadow"></div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div id="cFlame3" class="flame-glow w-3.5 h-7 bg-gradient-to-t from-amber-400 via-orange-400 to-yellow-100 rounded-full shadow-lg"></div>
+            <div class="w-2.5 h-9 bg-gradient-to-b from-pink-300 via-rose-300 to-pink-400 rounded-t-sm shadow"></div>
+          </div>
+        </div>
+
+        <!-- Tier 1 -->
+        <div class="w-36 sm:w-40 h-16 bg-gradient-to-r from-rose-300 via-pink-200 to-rose-300 rounded-t-2xl relative shadow-md border-b-4 border-rose-400/30 flex items-center justify-center">
+          <div class="w-full flex justify-around text-rose-200 text-xs font-bold">🍓 💖 🍓</div>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="w-48 sm:w-56 h-18 bg-gradient-to-r from-amber-100 via-rose-200 to-amber-100 rounded-t-2xl relative shadow-md border-b-4 border-rose-300/40 flex items-center justify-center">
+          <div class="w-full border-t-2 border-dashed border-rose-300"></div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="w-60 sm:w-68 h-20 bg-gradient-to-r from-rose-300 via-pink-300 to-rose-400 rounded-t-2xl relative shadow-lg flex items-center justify-center overflow-hidden">
+          <span class="text-white font-cute text-sm tracking-widest opacity-95 drop-shadow">Happy Birthday Meri Butki 🌸</span>
+        </div>
+
+        <!-- Cake Plate Base -->
+        <div class="w-72 sm:w-80 h-4 bg-gray-200 rounded-full shadow-lg border border-gray-300"></div>
+      </div>
+
+      <!-- Wish Status Text -->
+      <div id="cakeStatusText" class="mt-4 py-2.5 px-6 bg-rose-50 rounded-2xl inline-block border border-rose-200 text-rose-600 font-cute text-base transition-all max-w-xl">
+        Candle bujhao and make the sweetest wish! 🕯️✨
+      </div>
+    </section>
+
+    <!-- 2. THE 7 EXACT POLAROIDS GALLERY (Direct K-1.jpg to K-7.jpg) -->
+    <section class="mb-14">
+      <div class="text-center mb-8">
+        <h2 class="font-cute text-2xl sm:text-4xl text-rose-600 mb-1">Our Favorite Memories 📸</h2>
+        <p class="text-xs sm:text-sm text-gray-500">Khaas yaadein jo mere dil ke sabse kareeb hain...</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2">
+
+        <!-- Polaroid 1 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[-2deg] relative">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 -rotate-2 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img1" src="K-1.jpg" alt="Hmari phle mulaqat" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-1.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-rose-600">1. Hmari phle mulaqat</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              Tn yaad h ki jb tu ak saal nohra khane ke bad Milne aaye the or kitni drr rhi the 😂😂
+            </p>
+          </div>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[2.5deg] relative">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 rotate-1 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img2" src="K-2.jpg" alt="Sbse pyari mulaqat" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-2.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-amber-600">2. Sbse pyari mulaqat</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              Hm to jb bhi mile h sari hi best rhi h aapni to pr abhi tk to sbse must ye wali the hen 😚💝
+            </p>
+          </div>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[-1.5deg] relative">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 -rotate-2 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img3" src="K-3.jpg" alt="Hmari sbse best photo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-3.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-rose-600">3. Hmari sbse best photo</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              Hm dono ki ye wali photo kitni must h na yar 🫂💗
+            </p>
+          </div>
+        </div>
+
+        <!-- Polaroid 4 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[3deg] relative">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 rotate-2 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img4" src="K-4.jpg" alt="Tere sbse cute photo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-4.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-amber-600">4. Tere sbse cute photo</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              Es photo me tu duniya ki sbse pyari or cute ladki lagti h 💗💋
+            </p>
+          </div>
+        </div>
+
+        <!-- Polaroid 5 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[-2.5deg] relative">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 -rotate-1 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img5" src="K-5.jpg" alt="Tere sbse pyaari simle" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-5.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-rose-600">5. Tere sbse pyaari simle</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              Ye es photo me jo tere silme h na haayyyyy kya hi btau ab ese pr to hm pagal h 🫣
+            </p>
+          </div>
+        </div>
+
+        <!-- Polaroid 6 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[1.5deg] relative">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 rotate-2 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img6" src="K-6.jpg" alt="Butki" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-6.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-rose-500">6. Butki</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              Esme dhke tu lgg rhi h na butki to ab man bhi le ki tu ch butki 😁🤭
+            </p>
+          </div>
+        </div>
+
+        <!-- Polaroid 7 -->
+        <div class="polaroid-card bg-white p-4 pb-6 rounded-2xl border border-gray-100 rotate-[-1deg] relative sm:col-span-2 lg:col-span-1 sm:max-w-md sm:mx-auto lg:max-w-none">
+          <div class="washi-tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 -rotate-2 rounded-sm"></div>
+          <div class="w-full h-56 bg-rose-50 rounded-xl overflow-hidden mb-3 relative flex items-center justify-center border border-rose-100 group">
+            <img id="img7" src="K-7.jpg" alt="Mere bouniiiii badmosh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/ffe4e6/be123c?text=K-7.jpg+Photo+Here'"/>
+          </div>
+          <div class="text-center">
+            <h3 class="font-cute text-lg font-bold text-amber-600">7. Mere bouniiiii badmosh</h3>
+            <p class="text-xs text-gray-600 font-medium mt-1 leading-relaxed">
+              ye dhek mere choti don esme tu vo hi lgg rhi h jo tu bol ch n gangsster 🤣😝
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          3. HAMARI KHUBSURAT KAHANI (LOVE STORY TIMELINE)
+    ============================================================== -->
+    <section class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-rose-200 mb-14">
+      <div class="text-center mb-8">
+        <span class="inline-block bg-rose-100 text-rose-600 text-xs font-bold px-4 py-1 rounded-full mb-2">
+          📖 Hamari Love Story
+        </span>
+        <h2 class="font-cute text-2xl sm:text-4xl text-rose-600">Hamari Khubsurat Kahani 💫</h2>
+        <p class="text-xs sm:text-sm text-gray-500">Kaha se shuru hui aur kaise dil jud gaye...</p>
+      </div>
+
+      <div class="relative border-l-2 border-rose-300 ml-4 sm:ml-8 space-y-8 pl-6 sm:pl-8">
+        
+        <!-- Timeline Item 1 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 sm:w-7 sm:h-7 bg-rose-500 rounded-full border-4 border-white shadow-md flex items-center justify-center text-[10px] text-white font-bold">1</div>
+          <div class="bg-rose-50/80 p-4 sm:p-5 rounded-2xl border border-rose-200">
+            <h3 class="font-cute text-base sm:text-lg text-rose-600 mb-1">Pehli Nazar Ka Pyaar ✨</h3>
+            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
+              Yaar sach me tu us din me muje sbse pyari lge the or tere se pyar bhi use din ho gya tha jis din me test de rha tha tu hi simle krti hue pass me se nikli the
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 sm:w-7 sm:h-7 bg-pink-500 rounded-full border-4 border-white shadow-md flex items-center justify-center text-[10px] text-white font-bold">2</div>
+          <div class="bg-pink-50/80 p-4 sm:p-5 rounded-2xl border border-pink-200">
+            <h3 class="font-cute text-base sm:text-lg text-pink-600 mb-1">Wo Lambi Raatein & Baatein 🌙</h3>
+            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
+              Vo yaad h Kya tuje suru suru me hm dono 5 mint or 5 mint or krta krta subh tk baate kr cha vo bhi kya din the na
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 sm:w-7 sm:h-7 bg-rose-500 rounded-full border-4 border-white shadow-md flex items-center justify-center text-[10px] text-white font-bold">3</div>
+          <div class="bg-rose-50/80 p-4 sm:p-5 rounded-2xl border border-rose-200">
+            <h3 class="font-cute text-base sm:text-lg text-rose-600 mb-1">Official Relationship Day (1 August 2023) 💑</h3>
+            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
+              Apne bich kitne ldai hue kitne log chod na bole tnn tu bhut baar block bhi kri mn fer bhi yaad ho to aapa 1 August 2023 ko relationship me aa gye the
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 sm:w-7 sm:h-7 bg-amber-500 rounded-full border-4 border-white shadow-md flex items-center justify-center text-[10px] text-white font-bold">4</div>
+          <div class="bg-amber-50/80 p-4 sm:p-5 rounded-2xl border border-amber-200">
+            <h3 class="font-cute text-base sm:text-lg text-amber-700 mb-1">Hamesha Ka Saath (Forever Promise) ♾️</h3>
+            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
+              Hmare bich kuch bhi hua ho koi bhi aaya ho kabhi tu vapis aaye kabhi me aaya pr dono kabhi chod rr koni gya na Puri life ase hi rhna mere butki 😚
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          4. REASONS WHY I LOVE YOU (INTERACTIVE FLIP LETTERS)
+    ============================================================== -->
+    <section class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-rose-200 mb-14">
+      <div class="text-center mb-8">
+        <span class="inline-block bg-rose-100 text-rose-600 text-xs font-bold px-4 py-1 rounded-full mb-2">
+          💌 Open With Love
+        </span>
+        <h2 class="font-cute text-2xl sm:text-4xl text-rose-600">Reasons Why I Love You 💖</h2>
+        <p class="text-xs sm:text-sm text-gray-500">(Kisi bhi card par <span class="text-rose-500 font-bold">Tap / Click</span> karke andar ka secret padho!)</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        
+        <!-- Flip Card 1 -->
+        <div class="perspective-1000 h-44 sm:h-48 cursor-pointer" onclick="toggleCardFlip(this)">
+          <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d shadow-md hover:shadow-lg rounded-2xl">
+            <!-- Front -->
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden border-2 border-rose-300">
+              <span class="text-3xl mb-1">👑</span>
+              <h3 class="font-cute text-lg sm:text-xl text-rose-600 font-bold">1. Duniya ki sbse cute ladki</h3>
+              <p class="text-[11px] text-gray-400 mt-2">Tap karke padho ✨</p>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 bg-white rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 border-2 border-rose-400">
+              <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+                Mene na jb tuje phle baar deka tha na use din tere se pyar ho gya tha tu hmesha mere liye duniya ki sbse cute ladki rhege 💕
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 2 -->
+        <div class="perspective-1000 h-44 sm:h-48 cursor-pointer" onclick="toggleCardFlip(this)">
+          <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d shadow-md hover:shadow-lg rounded-2xl">
+            <!-- Front -->
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-100 via-yellow-50 to-amber-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden border-2 border-amber-300">
+              <span class="text-3xl mb-1">🤝</span>
+              <h3 class="font-cute text-lg sm:text-xl text-amber-700 font-bold">2. Loyal h</h3>
+              <p class="text-[11px] text-gray-400 mt-2">Tap karke padho ✨</p>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 bg-white rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 border-2 border-amber-400">
+              <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+                Biya thara lakhan to pitai ka hi ch pr aaj tk kabhi dhoka koni di n tu block to khair rojina hi kr ch 🤣🤣
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 3 -->
+        <div class="perspective-1000 h-44 sm:h-48 cursor-pointer" onclick="toggleCardFlip(this)">
+          <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d shadow-md hover:shadow-lg rounded-2xl">
+            <!-- Front -->
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden border-2 border-rose-300">
+              <span class="text-3xl mb-1">🌱</span>
+              <h3 class="font-cute text-lg sm:text-xl text-rose-600 font-bold">3. Tere aane se mere life chenge hue h</h3>
+              <p class="text-[11px] text-gray-400 mt-2">Tap karke padho ✨</p>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 bg-white rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 border-2 border-rose-400">
+              <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+                Tuje kese chod du yaar phle me kesa tha or jb tu h mere life me kitna change ho gya hu agr tu nhi hoti na to abhi tk pta nhi kesa ho jata 🫂✨
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 4 -->
+        <div class="perspective-1000 h-44 sm:h-48 cursor-pointer" onclick="toggleCardFlip(this)">
+          <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d shadow-md hover:shadow-lg rounded-2xl">
+            <!-- Front -->
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-100 via-rose-50 to-pink-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden border-2 border-rose-300">
+              <span class="text-3xl mb-1">🐥</span>
+              <h3 class="font-cute text-lg sm:text-xl text-rose-600 font-bold">4. Or mera payara bachaaa</h3>
+              <p class="text-[11px] text-gray-400 mt-2">Tap karke padho ✨</p>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 bg-white rounded-2xl p-5 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 border-2 border-rose-400">
+              <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+                Tu chaye kitni hi bdi hoja mere liye hmare mere pagal or cute sa chota sa bachaa hi rehege 😘😘
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          5. HUNDREDS OF SWARMING HEARTS ASSEMBLING INTO GIANT HEART
+    ============================================================== -->
+    <section id="swarmHeartSection" class="bg-gradient-to-b from-rose-950 via-slate-900 to-rose-950 rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-rose-400/40 text-center mb-14 relative overflow-hidden text-white">
+      
+      <div class="relative z-10 mb-3">
+        <span class="inline-block bg-rose-500/20 text-rose-300 border border-rose-400/40 text-xs font-bold px-4 py-1 rounded-full mb-2">
+          ✨ A Magical Surprise ✨
+        </span>
+        <h2 class="font-cute text-2xl sm:text-4xl text-rose-300">
+          Jab Saare Dhadkan Ek Ho Jayein...
+        </h2>
+        <p class="text-xs sm:text-sm text-rose-200/80 font-medium max-w-md mx-auto">
+          Hazaaron chhote hearts aapas me milkar bana rahe hain hamara sabse bada pyaar ❤️
+        </p>
+      </div>
+
+      <div class="relative w-full max-w-lg h-[360px] sm:h-[420px] mx-auto my-4 flex items-center justify-center">
+        <canvas id="heartAssemblyCanvas" class="absolute inset-0 w-full h-full z-10"></canvas>
+
+        <div id="assembledHeartMessage" class="relative z-20 opacity-0 transform scale-75 transition-all duration-1000 flex flex-col items-center justify-center pointer-events-none p-4">
+          <div class="heart-glow-pulse text-6xl sm:text-7xl mb-2 drop-shadow-[0_0_25px_rgba(244,63,94,0.9)]">
+            💖
+          </div>
+          
+          <h3 class="font-cursive text-3xl sm:text-5xl font-bold text-rose-200 drop-shadow-[0_2px_15px_rgba(244,63,94,0.9)] tracking-wide mb-1">
+            Love You Meri Butki ❤️✨
+          </h3>
+          <p class="font-cute text-sm sm:text-lg text-amber-200 drop-shadow font-semibold tracking-wider">
+            (Hamesha & Forever)
+          </p>
+          <p class="text-[11px] sm:text-xs text-rose-100/70 mt-2 max-w-xs text-center font-medium">
+            Chahe kitna bhi ladein, tum hi meri jaan aur meri sabse pyari Butki ho! 🐥💕
+          </p>
+        </div>
+      </div>
+
+      <div class="relative z-10 mt-3 flex justify-center">
+        <button 
+          onclick="triggerHeartAssembly()" 
+          class="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 hover:from-rose-600 hover:to-pink-600 text-white font-cute font-bold text-xs sm:text-sm py-2.5 px-6 rounded-2xl shadow-lg border border-rose-300/40 active:scale-95 transition flex items-center gap-2">
+          <span>🔄 Firse Dil Assemble Karo!</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          6. HAMARI ROZ KI NAUTANKI (FUNNY BANTER)
+    ============================================================== -->
+    <section class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-9 shadow-xl border-2 border-rose-200 mb-14">
+      <div class="text-center mb-6">
+        <span class="text-3xl">📜😂</span>
+        <h2 class="font-cute text-2xl sm:text-3xl text-rose-600">Hamari Roz Ki Nautanki</h2>
+        <p class="text-xs sm:text-sm text-gray-500">Roz ki ladai aur cuteness ka full dose!</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        
+        <!-- Nautanki 1 -->
+        <div class="bg-rose-50/80 p-4 rounded-2xl border border-rose-200">
+          <h3 class="font-cute text-rose-600 text-base mb-1">1. Kl pkka call krungi ⏰</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
+            Tuje jb ki call tai bol ta hu hmesha ye hi bol h ki aaj nhi kl pkka call krungi pr aaj tk tera vo kl nhi aaya abhi bhi man ja nhi pit li abb 👋👋😡😡
+          </p>
+        </div>
+
+        <!-- Nautanki 2 -->
+        <div class="bg-rose-50/80 p-4 rounded-2xl border border-rose-200">
+          <h3 class="font-cute text-rose-600 text-base mb-1">2. Aaj ke baad ldai nhi krenge 🤝</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
+            Tu hmesha ldai kr r eya hi bol h ki aaj ke bad hm kabhi bhi ldai koni kr la pr fer mushkil se 2 ya 3 din nikl la or aapa fer ldai kr lev la 🤣🤣
+          </p>
+        </div>
+
+        <!-- Nautanki 3 -->
+        <div class="bg-rose-50/80 p-4 rounded-2xl border border-rose-200">
+          <h3 class="font-cute text-rose-600 text-base mb-1">3. Galti hmesha mere nikal li 🤷‍♂️</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
+            Jb bhi maharani n ldai krne ki echha hov li khud kuch na kuch na kuch kr ke ldai kr hi li chaye kuch bhi ho fer galti nikal li mhari aada mata ki pagal 👊👊
+          </p>
+        </div>
+
+        <!-- Nautanki 4 -->
+        <div class="bg-rose-50/80 p-4 rounded-2xl border border-rose-200">
+          <h3 class="font-cute text-rose-600 text-base mb-1">4. Rusne me sbse aage h tu 🥺</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
+            Pto koni kde kde kai aav h tere me choti choti bata pr rus r bet jav ch fer reason puchu to ki kai n tera kaam kr 👋👊 fer maharani n mna ba n dance r dhikao eya to man hi koni 😂😂
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          7. DIL KI BAAT (SEPARATE EMOTIONAL LETTER)
+    ============================================================== -->
+    <section class="bg-gradient-to-r from-rose-50 via-pink-50 to-rose-50 rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-rose-300 mb-14">
+      <div class="text-center mb-6">
+        <span class="text-3xl">💌✨</span>
+        <h2 class="font-cute text-2xl sm:text-4xl text-rose-600">Dil Ki Baat</h2>
+        <p class="text-xs sm:text-sm text-gray-500">Sirf tere liye, dil ki gehraiyon se likha hua...</p>
+      </div>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base font-medium">
+        <p class="font-cute text-rose-600 text-xl font-bold">Meri Pyaari Butki,</p>
+        
+        <p>
+          Betu yaar dhek gussa or ldai ki baat h, gusaa me mjak me tuje bol deta ki ha chal muje bhi nhi Krni tere se baat jav na pr yaar sach btau na ksm se jis din tere se baat nhi hoti na pura mood kharab rhta h din bhi bhut muskil se nikl h bhut baar to ro liya yar ki baat q nhi kr block q kr di to yar betu pls chaye apne kuch bhi ho kabhi baat Krna band mtt Krna na pls 🥹 me gussa me hou to tu kese bhi sun r shn kr r mna liya kr na me bhi to mna ta hu tuje .
+        </p>
+
+        <p>
+          Betu tu chaye mere saat rhh ya nhi rhe aage ki life me chaye hamari baat ho ya nhi ho mere liye mere puri life me sbse important tu hi rhege sbse jyada pyar tere hi rhega muje or ye baat ase nhi h ki tere birthday h to ase hi jhut bol rha hu tu chaye man ya mtt man pr jitna pyar tere se kiya h mene utna kise de nhi krr skta tu mere liye mere duniya mera sb kuch h yaar . Or tere bina yaar 5 din to koni nikl Puri umr kiya nikal deu la tu kuch bhi bol de fer bhi 5 din ke andr andr to tere kn vapis aa jau chu .tu chaye kitni hi ldai kr le vapis to tere kn hi aau la pagal . Or jis din bhi tu Milne aati h pta h na kitna pagal ho jata hu me ki aaj to betu aase us din kitna Khush rhta hu q ki tu hi mere liye sb kuch h na betu jb jb bhi tu Milne aaye h sare din yaad h muje us din ki Khushi hi alg hoti h pagal . gudda sach baat ye h ki mere liye tu sbse phle h mere puri life tu hi rhege mere liye sbse important h tu me sbde jyda agr kise se pyar krta hu papa ke bad to vo tu h pagal ab chod or kai bolu aakya me aasu aav h fer tn yaad kr r bawli n .
+        </p>
+
+        <div class="p-4 bg-white/70 rounded-2xl border border-rose-200 text-rose-600 font-cute text-sm sm:text-base break-words text-center">
+          Once again happy happy happy happy birthdayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy mere bandri 😘😚💋💗😘😚💗💋💋💋💋💋💋💋💋💋💋💗💗💗💗😘😘😘😘😘😘😘😚😚😚😚😚😚😚😚😚😚😚😚💋💋💋💋💋💋💋💋💋💋😘😘😘😘😘😘😘😘😘😘😘💋💋💋💋💋💋💋💗💗💗💗💗💗😚😚😚😚😚😚
+        </div>
+
+        <div class="text-right pt-4">
+          <span class="font-cursive text-3xl sm:text-4xl text-rose-500 font-bold">Tera Pagal Hetpal 💕</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          8. PASSCODE GATE 2: THE VIP GOLDEN GIFT VOUCHER (`2702`)
+    ============================================================== -->
+    <section class="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-9 shadow-2xl border-2 border-amber-300 text-center mb-14 relative overflow-hidden">
+      <div class="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-4 py-1 rounded-full mb-3 border border-amber-200">
+        🎟️ Special VIP Gift Claim
+      </div>
+      <h2 class="font-cute text-2xl sm:text-3xl text-amber-600 mb-1">
+        Ruk Jao! Is Baar Pakka Gift Milega! 🎁
+      </h2>
+      <p class="text-xs sm:text-sm text-gray-600 mb-5 font-medium max-w-md mx-auto">
+        Agar sach me VIP Gift chahiye, toh hamari ek aur khaas date ka secret code unlock karo!
+      </p>
+
+      <div id="pinBox2" class="max-w-xs mx-auto mb-3">
+        <input 
+          type="text" 
+          id="passcode2Input" 
+          maxlength="4" 
+          placeholder="••••" 
+          class="w-full text-center text-3xl font-bold tracking-[0.5em] py-3 px-4 rounded-2xl border-2 border-amber-300 focus:outline-none focus:border-amber-500 bg-amber-50/50 text-amber-700 transition font-mono"
+        />
+      </div>
+
+      <div class="max-w-md mx-auto mb-4">
+        <div class="inline-flex items-center gap-1.5 text-xs sm:text-sm bg-amber-100 text-amber-800 px-4 py-2 rounded-2xl border border-amber-200 shadow-sm text-left">
+          <span>💌</span>
+          <span><b>Hint:</b> Wo magical din jab hum pehli baar aamne-saamne mile the... yaad karo wo tareekh jab pehli baar dekha tha tumhe! (DDMM format)</span>
+        </div>
+      </div>
+
+      <button 
+        onclick="verifyPasscode2()" 
+        class="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 hover:from-amber-500 hover:to-yellow-600 text-slate-900 font-cute font-bold py-3 px-8 rounded-2xl shadow-lg transform active:scale-95 transition text-base">
+        <span>Claim My VIP Gift! ✨</span>
+      </button>
+
+      <!-- Golden Voucher Reveal -->
+      <div id="goldenVoucher" class="hidden mt-8 transition-all duration-700">
+        <div class="max-w-lg mx-auto bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 border-4 border-dashed border-amber-400 rounded-3xl p-6 sm:p-8 shadow-2xl relative text-left">
+          <div class="flex justify-between items-center border-b-2 border-amber-300 pb-3 mb-4">
+            <span class="font-cute font-bold text-lg sm:text-xl text-amber-800">🎟️ OFFICIAL VIP BIRTHDAY PASS</span>
+            <span class="bg-amber-400 text-slate-900 text-xs font-bold px-2.5 py-1 rounded-full">NO EXPIRY</span>
+          </div>
+
+          <h3 class="font-cute text-2xl sm:text-3xl text-rose-600 font-bold mb-3">
+            "Special Birthday Promises For You!" 💝
+          </h3>
+
+          <ul class="text-xs sm:text-sm text-gray-800 font-semibold space-y-3 mb-5">
+            <li class="flex items-center gap-2.5 bg-white/70 p-2.5 rounded-xl border border-amber-300">
+              <span class="text-base">1️⃣</span> Kabhi bhi ldai nhi karunga
+            </li>
+            <li class="flex items-center gap-2.5 bg-white/70 p-2.5 rounded-xl border border-amber-300">
+              <span class="text-base">2️⃣</span> Hmesha tn chidau la 🤭
+            </li>
+            <li class="flex items-center gap-2.5 bg-white/70 p-2.5 rounded-xl border border-amber-300">
+              <span class="text-base">3️⃣</span> Ak ring h tere liye 💍✨
+            </li>
+          </ul>
+
+          <div class="bg-amber-300/60 p-3 rounded-2xl text-center font-cute text-amber-900 text-sm font-bold border border-amber-400">
+            Or tn jo bhi chahiye bta de sb milega! 🥰
+          </div>
+
+          <div class="border-t-2 border-amber-300 pt-3 mt-4 flex justify-between items-center text-xs text-amber-800 font-bold">
+            <span>Issued With Love For: Meri Butki 💕</span>
+            <span>Status: 100% APPROVED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+          9. "YE HI UH" - ULTRA ROMANTIC REALISTIC CINEMATIC MOONLIGHT HUG
+    ============================================================== -->
+    <section class="text-center bg-gradient-to-b from-[#14051f] via-[#0d0317] to-[#05010a] text-white rounded-3xl p-6 sm:p-12 shadow-2xl border-2 border-rose-500/40 relative overflow-hidden">
+      
+      <!-- Romantic Starlight Ambient Background Dust -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-rose-500/20 via-purple-900/10 to-transparent pointer-events-none"></div>
+
+      <div class="inline-block bg-rose-500/20 text-rose-300 border border-rose-400/40 text-xs font-bold px-4 py-1.5 rounded-full mb-3 backdrop-blur-md">
+        💑 Forever & Always
+      </div>
+      
+      <h2 class="font-cute text-3xl sm:text-5xl text-rose-300 mb-2 drop-shadow-[0_2px_15px_rgba(244,63,94,0.7)]">
+        Ye Hi Uh ❤️
+      </h2>
+      <p class="text-xs sm:text-sm text-rose-200/80 mb-8 font-medium max-w-md mx-auto">
+        Chahe duniya idhar ki udhar ho jaye, hum hamesha aise hi ek doosre ke saath rahenge!
+      </p>
+
+      <!-- Realistic Romantic Twilight Silhouette Artwork with Gentle Breathing Motion -->
+      <div class="relative w-80 h-80 sm:w-96 sm:h-96 mx-auto mb-8 flex items-center justify-center">
+        
+        <!-- Glowing Supermoon Rim Light Backdrop -->
+        <div class="absolute w-60 h-60 sm:w-72 sm:h-72 rounded-full bg-gradient-to-tr from-amber-100 via-rose-100 to-yellow-100 moon-radiance flex items-center justify-center overflow-hidden">
+          <!-- Realistic Soft Lunar Clouds & Depth Texture -->
+          <div class="absolute top-6 left-8 w-24 h-16 bg-amber-200/45 rounded-full blur-md"></div>
+          <div class="absolute bottom-10 right-8 w-32 h-20 bg-rose-200/40 rounded-full blur-lg"></div>
+          <div class="absolute top-1/2 left-1/3 w-16 h-10 bg-amber-300/30 rounded-full blur-sm"></div>
+        </div>
+
+        <!-- Animated Romantic Silhouette Vector of Intimate Loving Embrace -->
+        <svg class="w-72 h-72 sm:w-84 sm:h-84 relative z-10 drop-shadow-[0_16px_30px_rgba(0,0,0,0.85)] romantic-breath-hug" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Male Silhouette Shading -->
+            <linearGradient id="realBoyBody" x1="20%" y1="0%" x2="80%" y2="100%">
+              <stop offset="0%" stop-color="#1e183a"/>
+              <stop offset="45%" stop-color="#0f0d22"/>
+              <stop offset="100%" stop-color="#05030b"/>
+            </linearGradient>
+
+            <!-- Female Silhouette Warm Gradient Shading -->
+            <linearGradient id="realGirlBody" x1="10%" y1="0%" x2="90%" y2="100%">
+              <stop offset="0%" stop-color="#58112c"/>
+              <stop offset="50%" stop-color="#350819"/>
+              <stop offset="100%" stop-color="#120207"/>
+            </linearGradient>
+
+            <!-- Female Flowing Hair Gradient -->
+            <linearGradient id="realGirlHair" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#4a0b21"/>
+              <stop offset="100%" stop-color="#1b030b"/>
+            </linearGradient>
+
+            <!-- Golden Moon Rim Light Glow Filter -->
+            <filter id="moonRimGlow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="-1.5" dy="-1" stdDeviation="2.5" flood-color="#fef08a" flood-opacity="0.75"/>
+            </filter>
+          </defs>
+
+          <!-- Twinkling Star Sparks around couple -->
+          <polygon points="50,60 52,65 57,67 52,69 50,74 48,69 43,67 48,65" fill="#fef08a" class="shimmer-sparkle" style="animation-delay: 0.2s;"/>
+          <polygon points="265,70 267,75 272,77 267,79 265,84 263,79 258,77 263,75" fill="#fed7aa" class="shimmer-sparkle" style="animation-delay: 1.1s;"/>
+          <polygon points="40,190 42,194 46,196 42,198 40,202 38,198 34,196 38,194" fill="#fde047" class="shimmer-sparkle" style="animation-delay: 0.7s;"/>
+          <polygon points="275,180 277,185 282,187 277,189 275,194 273,189 268,187 273,185" fill="#fbcfe8" class="shimmer-sparkle" style="animation-delay: 1.6s;"/>
+
+          <!-- 1. BOY'S SILHOUETTE (Taller, protective, tenderly resting cheek against her head) -->
+          <g filter="url(#moonRimGlow)">
+            <!-- Boy's Head, Neck & Broad Shoulders -->
+            <path d="M118 82 C104 82 88 96 86 116 C84 133 96 146 113 150 C116 158 114 168 107 178 C91 185 76 202 72 232 L68 290 H154 L150 224 C146 199 139 178 135 156 C140 141 143 110 118 82 Z" fill="url(#realBoyBody)"/>
+            <!-- Boy's Stylized Realistic Hair -->
+            <path d="M80 112 C75 90 94 68 124 68 C144 68 153 87 149 101 C138 98 124 93 110 96 C98 98 86 104 80 112 Z" fill="#070a12"/>
+          </g>
+
+          <!-- 2. GIRL'S SILHOUETTE (Deeply embraced, leaning forehead on his collarbone) -->
+          <g>
+            <!-- Flowing Long Silky Hair With Gentle Wind Motion -->
+            <g class="hair-wind-drift">
+              <path d="M152 92 C168 72 198 76 206 100 C214 122 216 166 218 214 C212 208 202 200 196 194 C200 168 198 130 189 116 C178 98 165 98 152 92 Z" fill="url(#realGirlHair)"/>
+            </g>
+            <!-- Girl's Torso & Curvature in His Arms -->
+            <path d="M156 95 C170 95 184 107 186 125 C188 139 176 153 162 157 C158 165 162 178 170 188 C185 196 202 212 206 238 L210 290 H136 L142 228 C146 203 150 181 152 162 C148 149 146 117 156 95 Z" fill="url(#realGirlBody)"/>
+          </g>
+
+          <!-- 3. REALISTIC INTIMATE ARMS & EMBRACE DETAIL -->
+          <!-- Boy's Strong Arm Enfolding Her Lower Back/Waist with Moonlight Rim Light -->
+          <path d="M116 182 C136 186 180 194 194 179 C200 173 207 184 200 195 C180 216 136 212 111 201 Z" fill="#1b1535" stroke="#3730a3" stroke-width="2.5"/>
+          
+          <!-- Girl's Loving Hand Wrapped Around His Neck/Upper Shoulder -->
+          <path d="M178 188 C161 195 130 190 117 173 C111 166 103 175 109 184 C126 205 160 212 185 201 Z" fill="#6b1236" stroke="#9d174d" stroke-width="2.5"/>
+
+          <!-- 4. ASCENDING HEARTS (WHISPERING ROMANCE) -->
+          <g>
+            <!-- Primary Rising Rose Heart -->
+            <path d="M144 58 C144 50 152 44 158 48 C164 44 172 50 172 58 C172 68 158 77 158 77 C158 77 144 68 144 58 Z" fill="#f43f5e" opacity="0.95">
+              <animate attributeName="transform" type="translate" values="0,0; 2,-28; 5,-46" dur="3.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0; 0.95; 0" dur="3.2s" repeatCount="indefinite"/>
+              <animate attributeName="transform" type="scale" values="0.8; 1.15; 0.5" dur="3.2s" repeatCount="indefinite" additive="sum"/>
+            </path>
+
+            <!-- Secondary Soft Pink Heart -->
+            <path d="M132 88 C132 82 138 78 142 81 C146 78 152 82 152 88 C152 96 142 102 142 102 C142 102 132 96 132 88 Z" fill="#fb7185" opacity="0.8">
+              <animate attributeName="transform" type="translate" values="0,0; -4,-30; -2,-52" dur="4s" repeatCount="indefinite" begin="1.4s"/>
+              <animate attributeName="opacity" values="0; 0.85; 0" dur="4s" repeatCount="indefinite" begin="1.4s"/>
+            </path>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Shower Love Fireworks Button -->
+      <button 
+        onclick="triggerFireworks()" 
+        class="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 hover:from-rose-600 hover:to-pink-600 text-white font-cute font-bold py-3.5 px-8 rounded-2xl shadow-xl transform active:scale-95 transition text-base flex items-center justify-center gap-2 mx-auto border border-rose-300/40">
+        <span>Shower Love Fireworks! 🎆💖</span>
+      </button>
+
+      <footer class="mt-8 text-xs text-rose-300/60">
+        Created with endless love exclusively for Butki by Hetpal 💕
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ==============================================================
+        DRAMATIC 3D SLAP & SHATTERED GLASS POPUP (WRONG PASSCODE)
+  ============================================================== -->
+  <div id="slapModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    
+    <svg id="glassCrackSvg" class="absolute inset-0 w-full h-full pointer-events-none z-30 opacity-90" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+      <path d="M 500,500 L 220,150 L 120,400 L 280,480 L 100,750 L 350,680 L 480,950 L 620,720 L 900,850 L 750,550 L 950,300 L 680,380 Z" stroke="rgba(255,255,255,0.85)" stroke-width="3" fill="none" />
+      <path d="M 500,500 L 320,320 L 420,100 M 500,500 L 680,280 L 800,120 M 500,500 L 720,650 L 850,700 M 500,500 L 380,720 L 250,900 M 500,500 L 220,520 L 50,530 M 500,500 L 780,480 L 960,500" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" />
+      <path d="M 450,450 L 550,450 L 570,530 L 480,560 Z" stroke="rgba(255,255,255,0.95)" stroke-width="4" fill="rgba(255,255,255,0.15)" />
+    </svg>
+
+    <div id="comicChata" class="absolute top-1/4 sm:top-1/6 left-1/2 -translate-x-1/2 z-40 comic-pop pointer-events-none">
+      <div class="relative bg-gradient-to-r from-red-600 via-amber-500 to-red-600 text-white font-cute font-extrabold text-3xl sm:text-5xl px-6 py-3 rounded-full border-4 border-yellow-300 shadow-[0_0_30px_rgba(239,68,68,0.9)] transform -rotate-6">
+        💥 CHATA! 👋💥
+      </div>
+    </div>
+
+    <div class="relative z-40 max-w-md w-full bg-white/95 rounded-3xl p-6 sm:p-7 shadow-2xl border-4 border-red-500 text-center">
+      
+      <div class="relative w-40 h-40 mx-auto -mt-16 mb-2 slap-arm-swing">
+        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-2xl">
+          <path d="M190 140 L120 100 L105 125 L175 165 Z" fill="#fca5a5" stroke="#ef4444" stroke-width="3"/>
+          <path d="M125 105 C125 80 110 50 95 40 C85 35 75 45 80 60 L85 85 L65 45 C55 40 45 50 50 65 L70 95 L40 65 C30 60 20 70 25 85 L60 120 L30 95 C20 90 12 100 18 115 C28 140 60 160 105 145 Z" fill="#fecdd3" stroke="#e11d48" stroke-width="3.5"/>
+          <path d="M30 30 L50 45 M15 50 L40 60 M70 15 L75 35" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="bg-red-50 p-4 rounded-2xl border border-red-200 mb-4">
+        <h4 id="slapDialogueTitle" class="font-cute text-xl sm:text-2xl text-red-600 mb-1">
+          Arey Gadhi! Itni Si Date Bhool Gayi?! 😡💢
+        </h4>
+        <p id="slapDialogueBody" class="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
+          Ye le zor ka thappad! Itni jaldi hamara khaas din bhool gayi? Ab party cancel kar dunga agar dhyan se nahi socha toh! 😤
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <button 
+          onclick="closeSlapModal()" 
+          class="w-full bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-cute font-bold py-3 px-6 rounded-2xl shadow-lg transform active:scale-95 transition text-sm sm:text-base">
+          Theek hai sorry baba, ab dhyan se sochungi 🥺🙏
+        </button>
+        <p id="slapCountdown" class="text-[11px] text-gray-400">
+          Auto closing in 6 seconds...
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==============================================================
+        JAVASCRIPT LOGIC & AUDIO SYNTHESIZER
+  ============================================================== -->
+  <script>
+    let audioCtx = null;
+    let isMusicPlaying = false;
+    let musicInterval = null;
+
+    function getAudioCtx() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, type = 'sine', duration = 0.3, vol = 0.15) {
+      try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(vol, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    function playSlapImpactSound() {
+      try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(140, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.6, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+        playTone(380, 'sawtooth', 0.15, 0.4);
+      } catch(e) {}
+    }
+
+    function playCuteChime() {
+      playTone(523.25, 'triangle', 0.2, 0.2);
+      setTimeout(() => playTone(659.25, 'triangle', 0.2, 0.2), 110);
+      setTimeout(() => playTone(783.99, 'triangle', 0.25, 0.2), 220);
+      setTimeout(() => playTone(1046.50, 'sine', 0.5, 0.25), 330);
+    }
+
+    const bdayNotes = [
+      { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 293.66, d: 0.5 },
+      { f: 261.63, d: 0.5 }, { f: 349.23, d: 0.5 }, { f: 329.63, d: 0.8 },
+      { f: 261.63, d: 0.3 }, { f: 261.63, d: 0.3 }, { f: 293.66, d: 0.5 },
+      { f: 261.63, d: 0.5 }, { f: 392.00, d: 0.5 }, { f: 349.23, d: 0.8 }
+    ];
+
+    function toggleCuteMusic() {
+      const icon = document.getElementById('musicIcon');
+      const label = document.getElementById('musicLabel');
+
+      if (!isMusicPlaying) {
+        isMusicPlaying = true;
+        icon.textContent = '🔊';
+        label.textContent = 'Playing...';
+        playCuteChime();
+
+        let noteIdx = 0;
+        musicInterval = setInterval(() => {
+          if (!isMusicPlaying) return;
+          const note = bdayNotes[noteIdx % bdayNotes.length];
+          playTone(note.f, 'sine', note.d, 0.12);
+          noteIdx++;
+        }, 520);
+      } else {
+        isMusicPlaying = false;
+        clearInterval(musicInterval);
+        icon.textContent = '🎵';
+        label.textContent = 'Bday Melody';
+      }
+    }
+
+    function initAmbientHearts() {
+      const container = document.getElementById('ambientHearts');
+      const emojis = ['💖', '🌸', '✨', '💕', '🧸', '🎀', '🐥'];
+      for (let i = 0; i < 16; i++) {
+        const item = document.createElement('div');
+        item.className = 'bg-floating-heart select-none';
+        item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        item.style.left = Math.random() * 95 + 'vw';
+        item.style.animationDuration = (7 + Math.random() * 6) + 's';
+        item.style.animationDelay = (Math.random() * 6) + 's';
+        item.style.fontSize = (16 + Math.random() * 20) + 'px';
+        container.appendChild(item);
+      }
+    }
+
+    // Passcodes
+    const CODE_1 = '0108'; // 1 August 2023
+    let slapTimer = null;
+
+    function verifyPasscode1() {
+      const input = document.getElementById('passcode1Input').value.trim();
+      if (input === CODE_1) {
+        playCuteChime();
+        triggerSuperConfetti();
+
+        document.getElementById('lockScreen1').classList.add('opacity-0', 'scale-95');
+        setTimeout(() => {
+          document.getElementById('lockScreen1').classList.add('hidden');
+          const giftScreen = document.getElementById('giftBoxScreen');
+          giftScreen.classList.remove('hidden');
+          giftScreen.classList.add('opacity-100', 'scale-100');
+        }, 500);
+
+      } else {
+        showSlapModal(
+          "Arey Gadhi! Itni Si Date Bhool Gayi?! 😡💢",
+          "Ye le zor ka thappad! Itni jaldi hamara khaas din bhool gayi? Ab party cancel kar dunga agar dhyan se nahi socha toh! 😤 Dhyan se socho aur fir enter karo!"
+        );
+      }
+    }
+
+    const CODE_2 = '2702';
+    function verifyPasscode2() {
+      const input = document.getElementById('passcode2Input').value.trim();
+      if (input === CODE_2) {
+        playCuteChime();
+        triggerSuperConfetti();
+        const voucher = document.getElementById('goldenVoucher');
+        voucher.classList.remove('hidden');
+        voucher.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        showSlapModal(
+          "Tujhe Gift Nahi Chahiye Kya?! 😡👊",
+          "Arey gadhi! Gift bhi chahiye aur pehli mulaqat ki date bhi bhool gayi?! Ye le doosra thappad! Dhyan se socho hum kab pehli baar mile the!"
+        );
+      }
+    }
+
+    function showSlapModal(title, text) {
+      playSlapImpactSound();
+      document.body.classList.remove('screen-tremor');
+      void document.body.offsetWidth;
+      document.body.classList.add('screen-tremor');
+
+      const modal = document.getElementById('slapModal');
+      document.getElementById('slapDialogueTitle').textContent = title;
+      document.getElementById('slapDialogueBody').textContent = text;
+      
+      modal.classList.remove('hidden');
+
+      let countdown = 6;
+      const countEl = document.getElementById('slapCountdown');
+      countEl.textContent = `Auto closing in ${countdown} seconds...`;
+
+      clearInterval(slapTimer);
+      slapTimer = setInterval(() => {
+        countdown--;
+        if (countdown <= 0) {
+          clearInterval(slapTimer);
+          closeSlapModal();
+        } else {
+          countEl.textContent = `Auto closing in ${countdown} seconds...`;
+        }
+      }, 1000);
+
+      setTimeout(() => {
+        document.body.classList.remove('screen-tremor');
+      }, 700);
+    }
+
+    function closeSlapModal() {
+      clearInterval(slapTimer);
+      document.getElementById('slapModal').classList.add('hidden');
+      const p1 = document.getElementById('passcode1Input');
+      if (!p1.offsetParent) {
+        document.getElementById('passcode2Input').value = '';
+        document.getElementById('passcode2Input').focus();
+      } else {
+        p1.value = '';
+        p1.focus();
+      }
+    }
+
+    function openGiftBox() {
+      playCuteChime();
+      triggerSuperConfetti();
+
+      document.getElementById('boxLid').style.transform = 'translateY(-60px) rotate(-15deg)';
+      document.getElementById('boxLid').style.opacity = '0';
+
+      setTimeout(() => {
+        document.getElementById('unopenedGift').classList.add('hidden');
+        document.getElementById('openedGiftContent').classList.remove('hidden');
+      }, 400);
+    }
+
+    function dodgeRunawayBtn() {
+      const btn = document.getElementById('runawayNoBtn');
+      playTone(320, 'sine', 0.1, 0.2);
+
+      const rx = (Math.random() - 0.5) * 220;
+      const ry = (Math.random() - 0.5) * 160;
+
+      btn.style.position = 'relative';
+      btn.style.transform = `translate(${rx}px, ${ry}px)`;
+
+      const playfulWords = ['Pakad ke dikhao! 🏃‍♂️', 'Oops!', 'Nahi milega! 😜', 'Maan jao na! ❤️'];
+      btn.textContent = playfulWords[Math.floor(Math.random() * playfulWords.length)];
+    }
+
+    function proceedToCelebration() {
+      playCuteChime();
+      triggerSuperConfetti();
+
+      document.getElementById('giftBoxScreen').classList.add('opacity-0', 'scale-95');
+      setTimeout(() => {
+        document.getElementById('giftBoxScreen').classList.add('hidden');
+        const main = document.getElementById('mainCelebrationScreen');
+        main.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        if (!isMusicPlaying) toggleCuteMusic();
+        setupHeartSwarmObserver();
+      }, 500);
+    }
+
+    // Cake Candle Toggle with Custom Wish
+    let candlesOut = false;
+    function toggleCakeCandles() {
+      const f1 = document.getElementById('cFlame1');
+      const f2 = document.getElementById('cFlame2');
+      const f3 = document.getElementById('cFlame3');
+      const status = document.getElementById('cakeStatusText');
+
+      if (!candlesOut) {
+        candlesOut = true;
+        [f1, f2, f3].forEach(f => {
+          f.style.transition = 'all 0.5s ease-out';
+          f.style.opacity = '0';
+          f.style.transform = 'translateY(-15px) scale(0.2)';
+        });
+
+        playCuteChime();
+        triggerSuperConfetti();
+
+        status.innerHTML = '🎉 tere sari eccha puri ho mere butki, teja ji or jhujhar ji tuje hmesha khush rkhe 💖✨🙏';
+        status.className = 'mt-4 py-2.5 px-6 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-cute text-sm sm:text-base rounded-2xl shadow-lg animate-bounce max-w-xl mx-auto';
+      } else {
+        candlesOut = false;
+        [f1, f2, f3].forEach(f => {
+          f.style.opacity = '1';
+          f.style.transform = 'translateY(0) scale(1)';
+        });
+        status.innerHTML = 'Candles firse jal gayi! Tap to blow again! 🕯️';
+        status.className = 'mt-4 py-2 px-5 bg-rose-50 rounded-2xl inline-block border border-rose-200 text-rose-600 font-cute text-base';
+      }
+    }
+
+    // Flip Card Toggle
+    function toggleCardFlip(card) {
+      const inner = card.firstElementChild;
+      inner.classList.toggle('rotate-y-180');
+      playTone(440, 'sine', 0.1, 0.15);
+    }
+
+    // Swarming Heart Particle Engine
+    let swarmCanvas, swarmCtx;
+    let heartParticles = [];
+    let swarmAnimationId = null;
+    let isSwarmAssembled = false;
+    const NUM_PARTICLES = 360;
+
+    function getHeartPoint(t, scale = 11) {
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+      return { x: x * scale, y: y * scale };
+    }
+
+    class SwarmHeartParticle {
+      constructor(targetX, targetY, centerX, centerY, width, height) {
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.resetRandom(centerX, centerY, width, height);
+
+        this.size = Math.random() * 7 + 9;
+        this.colorHue = Math.random() > 0.3 ? (340 + Math.random() * 25) : (10 + Math.random() * 20);
+        this.alpha = Math.random() * 0.4 + 0.6;
+        this.speed = Math.random() * 0.035 + 0.022;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spinSpeed = (Math.random() - 0.5) * 0.06;
+      }
+
+      resetRandom(centerX, centerY, width, height) {
+        const spawnAngle = Math.random() * Math.PI * 2;
+        const spawnDistance = Math.max(width, height) * (0.6 + Math.random() * 0.5);
+        this.x = centerX + Math.cos(spawnAngle) * spawnDistance;
+        this.y = centerY + Math.sin(spawnAngle) * spawnDistance;
+      }
+
+      update() {
+        const dx = this.targetX - this.x;
+        const dy = this.targetY - this.y;
+        this.x += dx * this.speed;
+        this.y += dy * this.speed;
+        this.angle += this.spinSpeed;
+      }
+
+      draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = `hsla(${this.colorHue}, 95%, 65%, ${this.alpha})`;
+        ctx.shadowColor = `hsla(${this.colorHue}, 100%, 70%, 0.8)`;
+        ctx.shadowBlur = 8;
+
+        const s = this.size;
+        ctx.beginPath();
+        ctx.moveTo(0, s * 0.3);
+        ctx.bezierCurveTo(-s * 0.5, -s * 0.3, -s, s * 0.2, 0, s);
+        ctx.bezierCurveTo(s, s * 0.2, s * 0.5, -s * 0.3, 0, s * 0.3);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initHeartSwarmCanvas() {
+      swarmCanvas = document.getElementById('heartAssemblyCanvas');
+      if (!swarmCanvas) return;
+      swarmCtx = swarmCanvas.getContext('2d');
+
+      const rect = swarmCanvas.parentElement.getBoundingClientRect();
+      swarmCanvas.width = rect.width;
+      swarmCanvas.height = rect.height;
+
+      const centerX = swarmCanvas.width / 2;
+      const centerY = (swarmCanvas.height / 2) - 10;
+      const heartScale = Math.min(swarmCanvas.width, swarmCanvas.height) / 34;
+
+      heartParticles = [];
+      for (let i = 0; i < NUM_PARTICLES; i++) {
+        const t = (i / NUM_PARTICLES) * (Math.PI * 2);
+        const pt = getHeartPoint(t, heartScale);
+        const jitterX = (Math.random() - 0.5) * 14;
+        const jitterY = (Math.random() - 0.5) * 14;
+
+        heartParticles.push(new SwarmHeartParticle(
+          centerX + pt.x + jitterX,
+          centerY + pt.y + jitterY,
+          centerX,
+          centerY,
+          swarmCanvas.width,
+          swarmCanvas.height
+        ));
+      }
+    }
+
+    function animateSwarm() {
+      if (!swarmCtx) return;
+      swarmCtx.clearRect(0, 0, swarmCanvas.width, swarmCanvas.height);
+
+      let closeCount = 0;
+      heartParticles.forEach(p => {
+        p.update();
+        p.draw(swarmCtx);
+        const dist = Math.hypot(p.targetX - p.x, p.targetY - p.y);
+        if (dist < 12) closeCount++;
+      });
+
+      if (closeCount > NUM_PARTICLES * 0.78 && !isSwarmAssembled) {
+        isSwarmAssembled = true;
+        onHeartAssembledSuccess();
+      }
+
+      swarmAnimationId = requestAnimationFrame(animateSwarm);
+    }
+
+    function onHeartAssembledSuccess() {
+      playCuteChime();
+      triggerSuperConfetti();
+
+      const msg = document.getElementById('assembledHeartMessage');
+      msg.classList.remove('opacity-0', 'scale-75');
+      msg.classList.add('opacity-100', 'scale-100');
+    }
+
+    function triggerHeartAssembly() {
+      isSwarmAssembled = false;
+      const msg = document.getElementById('assembledHeartMessage');
+      msg.classList.add('opacity-0', 'scale-75');
+      msg.classList.remove('opacity-100', 'scale-100');
+
+      if (swarmAnimationId) cancelAnimationFrame(swarmAnimationId);
+      initHeartSwarmCanvas();
+      animateSwarm();
+    }
+
+    let hasTriggeredScroll = false;
+    function setupHeartSwarmObserver() {
+      const section = document.getElementById('swarmHeartSection');
+      if (!section) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasTriggeredScroll) {
+            hasTriggeredScroll = true;
+            triggerHeartAssembly();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      observer.observe(section);
+    }
+
+    function triggerSuperConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 75,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#f43f5e', '#ec4899', '#fb7185', '#fef08a', '#ffffff']
+        });
+      }
+    }
+
+    function triggerFireworks() {
+      playCuteChime();
+      if (typeof confetti === 'function') {
+        const count = 200;
+        const defaults = { origin: { y: 0.7 } };
+
+        function fire(particleRatio, opts) {
+          confetti(Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio)
+          }));
+        }
+
+        fire(0.25, { spread: 26, startVelocity: 55, colors: ['#f43f5e', '#fb7185'] });
+        fire(0.2, { spread: 60, colors: ['#ffffff', '#fbbf24'] });
+        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, colors: ['#ec4899', '#fda4af'] });
+        fire(0.1, { spread: 120, startVelocity: 45 });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAmbientHearts();
+
+      const pin1 = document.getElementById('passcode1Input');
+      if (pin1) {
+        pin1.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') verifyPasscode1();
+        });
+      }
+
+      const pin2 = document.getElementById('passcode2Input');
+      if (pin2) {
+        pin2.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') verifyPasscode2();
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        if (!document.getElementById('mainCelebrationScreen').classList.contains('hidden')) {
+          initHeartSwarmCanvas();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
